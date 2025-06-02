@@ -1,0 +1,16 @@
+trigger:
+  branches:
+      include:
+        - main
+  paths:
+      include:
+        - options/*
+
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: util_pipeline
+
+extends:
+  template: QA/karate-backend/upload-options.yml@templates

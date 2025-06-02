@@ -1,0 +1,2 @@
+# Ignorar la carpeta karate-reports dentro de app/target
+app/target/

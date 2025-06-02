@@ -1,0 +1,33 @@
+[
+  {
+    "setId": "catalog_carlosmendez",
+    "karateOptions": "-Dkarate.options=--tags CarlosMendez",
+    "karateVariables": ""
+  },
+    {
+    "setId": "catalog_rsolares",
+    "karateOptions": "-Dkarate.options=--tags rsolares",
+    "karateVariables": ""
+  },
+  {
+    "setId": "catalog_marvinleon",
+    "karateOptions": "-Dkarate.options=--tags marvin",
+    "karateVariables": ""
+  },
+
+  {
+    "setId": "catalog_melissarod",
+    "karateOptions": "-Dkarate.options=--tags mrodriguez",
+    "karateVariables": ""
+  },
+  {
+    "setId": "catalog_GenesisMorales",
+    "karateOptions": "-Dkarate.options=--tags GenesisMorales",
+    "karateVariables": ""
+  },
+  {
+    "setId": "all",
+    "karateOptions": "",
+    "karateVariables": ""
+  }
+]
