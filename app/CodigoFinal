@@ -1,0 +1,35 @@
+Feature: Servicio para listar todos los catálogos de tipos de productos.
+
+Background:
+    * url urlCommons
+    * def testuser1 = callonce read("classpath:helpers/security/authorize.feature") { username: 'testuser1' }
+
+@administration @catalog @GenesisMorales
+Scenario: Consulta del detalle para el catálogo PRODUCTS_TYPES
+    Given path "/administration/v1/catalog/PRODUCTS_TYPES/detail"
+    And header Authorization = 'Bearer ' + testuser1.accessToken
+    And request {}
+    When method post
+    Then status 200
+
+    # Validaciones del código de respuesta
+    And match response.code == 'SUCCESSFUL_OPERATION'
+
+    # Validar que el catalogCode sea PRODUCTS_TYPES
+    And match response.data.record.catalogCode == 'PRODUCTS_TYPES'
+
+    # Validar que todos los items estén activos
+    And match each response.data.record.items[*].active == true
+
+    # Obtener todos los product_type_id en un array plano
+    * def productTypeIds = get response.data.record.items[*].product_type_id
+    And match productTypeIds contains only [20, 3, 4]
+
+    # Validar tipos de campos individuales
+    And match each response.data.record.items[*].order == '#number'
+    And match each response.data.record.items[*].id == '#uuid'
+    And match each response.data.record.items[*].name == '#string'
+
+    # Obtener y validar los nombres esperados
+    * def productNames = get response.data.record.items[*].name
+    And match productNames contains only ["Tarjeta de crédito", "Monetario", "Ahorro"]
